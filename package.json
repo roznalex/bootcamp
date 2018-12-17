@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "migrate-db": "node ./scripts/migrate-db.js",
+    "rollback-db": "node ./scripts/rollback-db.js",
     "test-web": "mocha --exit ./tests/functional",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,8 +23,10 @@
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "joi": "^14.3.0",
+    "knex": "^0.16.2",
     "koa": "^2.6.2",
     "koa-router": "^7.4.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "pg": "^7.7.1"
   }
 }

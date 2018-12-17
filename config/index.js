@@ -1,7 +1,9 @@
+'use strict'
+
 const joi = require('joi')
 const _ = require('lodash')
 
-const config = require('./config.json')
+const config = require('./config')
 
 require('dotenv').config({ path: 'config/.env' })
 
@@ -23,8 +25,13 @@ const envVarsSchema = joi.object({
       is: 'test',
       then: joi.default('warn')
     }),
-  PORT: joi.string().required(),
-  GITHUB_AUTH_TOKEN: joi.string().required()
+  PORT: joi.string(),
+  GITHUB_AUTH_TOKEN: joi.string().required(),
+  PG_CONNECTION_STRING: joi.string(),
+  PG_DATABASE: joi.string(),
+  PG_MIGRATION_DIR: joi.string(),
+  PG_POOL_MIN: joi.number().integer().min(1).max(20),
+  PG_POOL_MAX: joi.number().integer().min(1).max(20)
 })
   .unknown().required()
 
@@ -44,6 +51,14 @@ const configFromEnv = {
   api: {
     github: {
       authToken: envVars.GITHUB_AUTH_TOKEN
+    }
+  },
+  db: {
+    connection: envVars.PG_CONNECTION_STRING,
+    migrations: envVars.PG_MIGRATION_DIR,
+    pool: {
+      min: envVars.PG_POOL_MIN,
+      max: envVars.PG_POOL_MAX
     }
   }
 }

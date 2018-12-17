@@ -1,3 +1,5 @@
+'use strict'
+
 /* globals describe, it */
 
 const chai = require('chai')

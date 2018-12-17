@@ -1,9 +1,14 @@
+'use strict'
+
+const _ = require('lodash')
 const http = require('http')
 
 const config = require('./config')
 const app = require('./src/app')
 
-const PORT = config.get('port')
+const PORT = _.get(config, 'port')
+
+require('./db')
 
 const server = http.createServer(app.callback())
 
