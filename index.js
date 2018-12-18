@@ -8,8 +8,6 @@ const app = require('./src/app')
 
 const PORT = _.get(config, 'port')
 
-require('./db')
-
 const server = http.createServer(app.callback())
 
 server.listen(PORT, () => console.log(`Server is started at port: ${PORT}`))

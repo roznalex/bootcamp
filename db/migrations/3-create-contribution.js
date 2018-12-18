@@ -4,9 +4,9 @@ const tableName = 'contribution'
 
 function up (knex) {
   return knex.schema.createTable(tableName, (table) => {
-    table.integer('user').unsigned().notNullable()
+    table.integer('user')
     table.foreign('user').references('user.id').onDelete('CASCADE')
-    table.increments('repository').unsigned().notNullable()
+    table.integer('repository')
     table.foreign('repository').references('repository.id').onDelete('CASCADE')
     table.integer('line_count').unsigned().notNullable()
     table.primary(['user', 'repository'])
