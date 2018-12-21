@@ -31,7 +31,8 @@ const envVarsSchema = joi.object({
   PG_DATABASE: joi.string(),
   PG_MIGRATION_DIR: joi.string(),
   PG_POOL_MIN: joi.number().integer().min(1).max(20),
-  PG_POOL_MAX: joi.number().integer().min(1).max(20)
+  PG_POOL_MAX: joi.number().integer().min(1).max(20),
+  DB_DEBUG: joi.boolean().default(false)
 })
   .unknown().required()
 
@@ -59,7 +60,8 @@ const configFromEnv = {
     pool: {
       min: envVars.PG_POOL_MIN,
       max: envVars.PG_POOL_MAX
-    }
+    },
+    debug: envVars.DB_DEBUG
   }
 }
 

@@ -7,8 +7,9 @@
     "start": "node index.js",
     "migrate-db": "node ./scripts/migrate-db.js",
     "rollback-db": "node ./scripts/rollback-db.js",
-    "test-web": "mocha --exit ./tests/functional",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-web": "mocha --recursive --exit ./tests/functional",
+    "test-unit": "mocha --recursive --exit ./tests/unit",
+    "test": "mocha --recursive --exit ./tests"
   },
   "author": "roznalex",
   "license": "ISC",
